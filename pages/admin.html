@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Law Firm</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .admin-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+        
+        .admin-section {
+            background: white;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn {
+            background: #d4af37;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-right: 10px;
+        }
+        
+        .btn:hover {
+            background: #b8941f;
+        }
+        
+        .btn-danger {
+            background: #dc3545;
+        }
+        
+        .btn-danger:hover {
+            background: #c82333;
+        }
+        
+        .contacts-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .contacts-table th,
+        .contacts-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .contacts-table th {
+            background: #f8f9fa;
+            font-weight: bold;
+        }
+        
+        .chat-session {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            border-radius: 5px;
+            background: white;
+            margin-bottom: 1rem;
+        }
+        
+        .chat-interface {
+            margin-top: 2rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .chat-header {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chat-messages {
+            height: 400px;
+            overflow-y: auto;
+            padding: 1rem;
+            background: white;
+        }
+        
+        .chat-message {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .chat-message.admin {
+            background: #e8f5e8;
+            margin-left: 20%;
+        }
+        
+        .chat-message.client {
+            background: #f0f0f0;
+            margin-right: 20%;
+        }
+        
+        .chat-input-area {
+            padding: 1rem;
+            border-top: 1px solid #ddd;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .chat-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1><a href="../index.html" style="color: #d4af37; text-decoration: none;">Law Firm</a></h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="admin.html">Admin Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="margin-top: 80px; padding: 2rem 0;">
+        <div class="admin-container">
+            <!-- Login Form -->
+            <div id="loginSection" class="admin-section">
+                <h1>🔐 Admin Login</h1>
+                <form id="loginForm" style="max-width: 400px; margin: 0 auto;">
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" value="admin" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" value="admin123" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Login</button>
+                </form>
+                <p style="text-align: center; margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                    Default credentials: admin / admin123
+                </p>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div id="dashboardContent" style="display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h1>📊 Admin Dashboard</h1>
+                    <button onclick="logout()" class="btn btn-danger">Logout</button>
+                </div>
+                
+                <div class="info-box">
+                    <strong>📧 Email Notifications:</strong> All contact form submissions and chat messages are sent to: <strong id="adminEmailDisplay">Loading...</strong>
+                    <br><small>To change this, edit ADMIN_EMAIL in your .env file</small>
+                </div>
+            
+            <!-- Contact Messages Section -->
+            <div class="admin-section">
+                <h2>📬 Contact Form Submissions</h2>
+                <button onclick="loadContacts()" class="btn">🔄 Refresh</button>
+                
+                <div id="contactsContainer">
+                    <p>Loading contact messages...</p>
+                </div>
+            </div>
+            
+            <!-- Live Chat Management Section -->
+            <div class="admin-section">
+                <h2>💬 Live Chat Sessions</h2>
+                <button onclick="loadChatSessions()" class="btn">🔄 Refresh</button>
+                
+                <div id="chatSessionsContainer">
+                    <p>Loading chat sessions...</p>
+                </div>
+                
+                <!-- Chat Interface -->
+                <div id="adminChatInterface" class="chat-interface" style="display: none;">
+                    <div class="chat-header">
+                        <h3>Chat: <span id="currentSessionId"></span></h3>
+                        <button onclick="closeChatInterface()" class="btn btn-danger">✕ Close</button>
+                    </div>
+                    <div id="adminChatMessages" class="chat-messages"></div>
+                    <div class="chat-input-area">
+                        <input type="text" id="adminChatInput" class="chat-input" placeholder="Type your message..." onkeypress="handleEnter(event)">
+                        <button onclick="sendAdminMessage()" class="btn">Send</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Law Firm. All rights reserved.</p>
+    </footer>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        let adminSocket;
+        let currentChatSession = null;
+        let isAuthenticated = false;
+        
+        // Handle login
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const loginData = {
+                username: formData.get('username'),
+                password: formData.get('password')
+            };
+            
+            try {
+                const response = await fetch('/api/admin/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(loginData)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    isAuthenticated = true;
+                    document.getElementById('loginSection').style.display = 'none';
+                    document.getElementById('dashboardContent').style.display = 'block';
+                    
+                    // Initialize dashboard
+                    loadContacts();
+                    loadChatSessions();
+                    loadAdminConfig();
+                    initializeAdminChat();
+                    
+                    // Auto-refresh every 30 seconds
+                    setInterval(() => {
+                        if (isAuthenticated) {
+                            loadContacts();
+                            loadChatSessions();
+                        }
+                    }, 30000);
+                } else {
+                    alert('Invalid credentials. Please try again.');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                alert('Login failed. Please try again.');
+            }
+        });
+        
+        // Logout function
+        function logout() {
+            isAuthenticated = false;
+            document.getElementById('loginSection').style.display = 'block';
+            document.getElementById('dashboardContent').style.display = 'none';
+            if (adminSocket) {
+                adminSocket.disconnect();
+            }
+        }
+        
+        // Initialize admin chat socket
+        function initializeAdminChat() {
+            adminSocket = io();
+            
+            adminSocket.on('connect', function() {
+                console.log('Admin connected to chat server');
+            });
+            
+            adminSocket.on('message', function(data) {
+                if (currentChatSession && data.sessionId === currentChatSession) {
+                    displayChatMessage(data.message, data.senderName, data.isAdmin, data.timestamp);
+                }
+            });
+            
+            adminSocket.on('chat-history', function(history) {
+                const messagesDiv = document.getElementById('adminChatMessages');
+                if (messagesDiv) {
+                    messagesDiv.innerHTML = '';
+                    history.forEach(msg => {
+                        displayChatMessage(msg.message, msg.senderName, msg.isAdmin, msg.timestamp);
+                    });
+                }
+            });
+        }
+        
+        // Load admin configuration
+        async function loadAdminConfig() {
+            try {
+                const response = await fetch('/api/admin/config');
+                const config = await response.json();
+                
+                document.getElementById('adminEmailDisplay').textContent = config.adminEmail;
+            } catch (error) {
+                console.error('Error loading admin config:', error);
+                document.getElementById('adminEmailDisplay').textContent = 'Error loading email';
+            }
+        }
+        
+        // Load contact messages
+        async function loadContacts() {
+            if (!isAuthenticated) return;
+            
+            try {
+                const response = await fetch('/api/admin/contacts');
+                const contacts = await response.json();
+                
+                console.log('Loaded contacts:', contacts); // Debug log
+                
+                const container = document.getElementById('contactsContainer');
+                
+                if (contacts.length === 0) {
+                    container.innerHTML = '<p style="color: #666; margin-top: 1rem;">No contact messages yet.</p>';
+                    return;
+                }
+                
+                let tableHTML = `
+                    <table class="contacts-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Message</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+                
+                contacts.forEach(contact => {
+                    const date = new Date(contact.created_at).toLocaleString();
+                    tableHTML += `
+                        <tr>
+                            <td>${date}</td>
+                            <td>${contact.name}</td>
+                            <td><a href="mailto:${contact.email}">${contact.email}</a></td>
+                            <td>${contact.phone || 'N/A'}</td>
+                            <td>${contact.message.substring(0, 100)}${contact.message.length > 100 ? '...' : ''}</td>
+                        </tr>
+                    `;
+                });
+                
+                tableHTML += '</tbody></table>';
+                container.innerHTML = tableHTML;
+                
+            } catch (error) {
+                console.error('Error loading contacts:', error);
+                document.getElementById('contactsContainer').innerHTML = 
+                    '<p style="color: #dc3545;">Error loading contact messages.</p>';
+            }
+        }
+        
+        // Load chat sessions
+        function loadChatSessions() {
+            fetch('/api/admin/chat-sessions')
+                .then(response => response.json())
+                .then(sessions => {
+                    const container = document.getElementById('chatSessionsContainer');
+                    
+                    if (sessions.length === 0) {
+                        container.innerHTML = '<p style="color: #666; margin-top: 1rem;">No active chat sessions.</p>';
+                        return;
+                    }
+                    
+                    let html = '';
+                    
+                    sessions.forEach(session => {
+                        const joinedTime = new Date(session.joinedAt).toLocaleString();
+                        const statusColor = session.isActive ? '#28a745' : '#6c757d';
+                        html += `
+                            <div class="chat-session">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <strong>Session: ${session.sessionId}</strong>
+                                        <span style="color: ${statusColor}; margin-left: 10px;">● ${session.isActive ? 'Active' : 'Inactive'}</span>
+                                        <br>
+                                        <small>Started: ${joinedTime} | Messages: ${session.messageCount}</small>
+                                    </div>
+                                    <button onclick="joinChatSession('${session.sessionId}')" class="btn">Join Chat</button>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    container.innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error loading chat sessions:', error);
+                    document.getElementById('chatSessionsContainer').innerHTML = 
+                        '<p style="color: #dc3545;">Error loading chat sessions.</p>';
+                });
+        }
+        
+        // Join chat session
+        function joinChatSession(sessionId) {
+            currentChatSession = sessionId;
+            document.getElementById('currentSessionId').textContent = sessionId;
+            document.getElementById('adminChatInterface').style.display = 'block';
+            document.getElementById('adminChatMessages').innerHTML = '';
+            
+            // Join the chat session
+            adminSocket.emit('join-chat', { sessionId: sessionId, isAdmin: true });
+            
+            // Scroll to chat interface
+            document.getElementById('adminChatInterface').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Close chat interface
+        function closeChatInterface() {
+            document.getElementById('adminChatInterface').style.display = 'none';
+            currentChatSession = null;
+        }
+        
+        // Send admin message
+        function sendAdminMessage() {
+            const input = document.getElementById('adminChatInput');
+            const message = input.value.trim();
+            
+            if (!message || !currentChatSession) return;
+            
+            adminSocket.emit('message', {
+                sessionId: currentChatSession,
+                message: message,
+                senderName: 'Legal Team',
+                isAdmin: true
+            });
+            
+            input.value = '';
+        }
+        
+        // Display chat message
+        function displayChatMessage(message, senderName, isAdmin, timestamp) {
+            const messagesDiv = document.getElementById('adminChatMessages');
+            if (!messagesDiv) return;
+            
+            const msgDiv = document.createElement('div');
+            
+            msgDiv.className = `chat-message ${isAdmin ? 'admin' : 'client'}`;
+            
+            const displayTime = timestamp ? new Date(timestamp).toLocaleTimeString() : new Date().toLocaleTimeString();
+            msgDiv.innerHTML = `
+                <strong>${senderName}:</strong> ${message}
+                <br><small style="color: #666;">${displayTime}</small>
+            `;
+            
+            messagesDiv.appendChild(msgDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+        
+        // Handle Enter key
+        function handleEnter(event) {
+            if (event.key === 'Enter') {
+                sendAdminMessage();
+            }
+        }
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Page loads with login form visible
+            console.log('Admin panel loaded');
+        });
+    </script>
+</body>
+</html>

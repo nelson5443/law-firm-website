@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage Law Chambers | Premier Legal Services</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Heritage Law Chambers</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#services" class="nav-link">Practice Areas</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#team" class="nav-link">Our Team</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/contact.html" class="nav-link consultation-btn">Free Consultation</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" onclick="showAdminLogin()" class="nav-link">Admin</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Trusted Legal Excellence Since 1985</h1>
+            <p>Providing comprehensive legal solutions with integrity, expertise, and unwavering commitment to our clients' success.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Get Legal Help</a>
+                <a href="#about" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="stat">
+                <h3>500+</h3>
+                <p>Cases Won</p>
+            </div>
+            <div class="stat">
+                <h3>35+</h3>
+                <p>Years Experience</p>
+            </div>
+            <div class="stat">
+                <h3>98%</h3>
+                <p>Success Rate</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Heritage Law Chambers</h2>
+                    <p class="lead">For over three decades, Heritage Law Chambers has been a cornerstone of legal excellence, providing sophisticated legal services to individuals, families, and businesses.</p>
+                    <p>Our firm combines traditional values with modern legal expertise, ensuring that every client receives personalized attention and strategic counsel tailored to their unique circumstances.</p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Trusted Representation</h4>
+                            <p>Decades of proven results and client satisfaction</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-balance-scale"></i>
+                            <h4>Expert Legal Counsel</h4>
+                            <p>Comprehensive knowledge across multiple practice areas</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-handshake"></i>
+                            <h4>Client-Focused Approach</h4>
+                            <p>Personalized strategies for optimal outcomes</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-building"></i>
+                        <p>Professional Law Office</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Practice Areas</h2>
+                <p>Comprehensive legal services tailored to meet your specific needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Estate Planning & Probate</h3>
+                    <p>Comprehensive estate planning, wills, trusts, and probate administration to protect your family's future.</p>
+                    <ul>
+                        <li>Will & Testament Drafting</li>
+                        <li>Trust Administration</li>
+                        <li>Probate Proceedings</li>
+                        <li>Estate Tax Planning</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3>Contract Law</h3>
+                    <p>Expert contract drafting, review, and dispute resolution for businesses and individuals.</p>
+                    <ul>
+                        <li>Contract Drafting & Review</li>
+                        <li>Business Agreements</li>
+                        <li>Contract Disputes</li>
+                        <li>Compliance Advisory</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Corporate Law</h3>
+                    <p>Strategic legal counsel for businesses of all sizes, from startups to established corporations.</p>
+                    <ul>
+                        <li>Business Formation</li>
+                        <li>Corporate Governance</li>
+                        <li>Mergers & Acquisitions</li>
+                        <li>Regulatory Compliance</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Family Law</h3>
+                    <p>Compassionate representation in family matters with focus on protecting your interests.</p>
+                    <ul>
+                        <li>Divorce & Separation</li>
+                        <li>Child Custody</li>
+                        <li>Adoption Services</li>
+                        <li>Prenuptial Agreements</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-car-crash"></i>
+                    </div>
+                    <h3>Personal Injury</h3>
+                    <p>Aggressive representation for accident victims to secure maximum compensation.</p>
+                    <ul>
+                        <li>Auto Accidents</li>
+                        <li>Medical Malpractice</li>
+                        <li>Workplace Injuries</li>
+                        <li>Insurance Claims</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <h3>Criminal Defense</h3>
+                    <p>Experienced criminal defense representation protecting your rights and freedom.</p>
+                    <ul>
+                        <li>DUI/DWI Defense</li>
+                        <li>White Collar Crimes</li>
+                        <li>Drug Offenses</li>
+                        <li>Appeals</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Legal Team</h2>
+                <p>Experienced attorneys dedicated to achieving the best outcomes for our clients</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>James Heritage</h3>
+                    <p class="title">Senior Partner</p>
+                    <p class="bio">35+ years specializing in estate planning and corporate law. Harvard Law School graduate.</p>
+                    <div class="member-contact">
+                        <p><i class="fas fa-envelope"></i> j.heritage@heritagelawchambers.com</p>
+                        <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Sarah Mitchell</h3>
+                    <p class="title">Partner</p>
+                    <p class="bio">20+ years in family law and personal injury. Known for compassionate yet aggressive representation.</p>
+                    <div class="member-contact">
+                        <p><i class="fas fa-envelope"></i> s.mitchell@heritagelawchambers.com</p>
+                        <p><i class="fas fa-phone"></i> (555) 123-4568</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Michael Chen</h3>
+                    <p class="title">Associate Attorney</p>
+                    <p class="bio">15+ years in criminal defense and contract law. Former prosecutor with extensive trial experience.</p>
+                    <div class="member-contact">
+                        <p><i class="fas fa-envelope"></i> m.chen@heritagelawchambers.com</p>
+                        <p><i class="fas fa-phone"></i> (555) 123-4569</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+                <p>Get in touch for a confidential consultation</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Office Address</h4>
+                            <p>123 Legal Plaza, Suite 500<br>Downtown District<br>City, State 12345</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>(555) 123-4567</p>
+                            <p>24/7 Emergency Line</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@heritagelawchambers.com</p>
+                            <p>consultation@heritagelawchambers.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Office Hours</h4>
+                            <p>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 2:00 PM<br>Sunday: By Appointment</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Schedule a Consultation</h3>
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" placeholder="Phone Number">
+                        </div>
+                        <div class="form-group">
+                            <select id="service" name="service" required>
+                                <option value="">Select Legal Service</option>
+                                <option value="estate">Estate Planning & Probate</option>
+                                <option value="contract">Contract Law</option>
+                                <option value="corporate">Corporate Law</option>
+                                <option value="family">Family Law</option>
+                                <option value="injury">Personal Injury</option>
+                                <option value="criminal">Criminal Defense</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Describe your legal matter..." rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Request Consultation</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Heritage Law Chambers</h3>
+                    <p>Providing trusted legal counsel with integrity and excellence for over 35 years.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Practice Areas</h4>
+                    <ul>
+                        <li><a href="#services">Estate Planning</a></li>
+                        <li><a href="#services">Contract Law</a></li>
+                        <li><a href="#services">Corporate Law</a></li>
+                        <li><a href="#services">Family Law</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="pages/contact.html">Free Consultation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Legal Plaza, Suite 500</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@heritagelawchambers.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Heritage Law Chambers. All rights reserved. | Attorney Advertising</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div id="chat-widget">
+        <div id="chat-toggle">
+            <i class="fas fa-comments"></i>
+            <span>Live Chat</span>
+        </div>
+        <div id="chat-box" class="hidden">
+            <div class="chat-header">
+                <h4>Legal Consultation</h4>
+                <button id="chat-close">&times;</button>
+            </div>
+            <div id="messages"></div>
+            <div class="chat-input">
+                <input id="msg" placeholder="Type your message..." />
+                <button onclick="sendMsg()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div id="adminModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeAdminLogin()">&times;</span>
+            <h2>Admin Login</h2>
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <input type="text" id="adminUsername" placeholder="Username" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="adminPassword" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <div id="loginError" style="color: red; margin-top: 10px;"></div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+</body>
+</html>
