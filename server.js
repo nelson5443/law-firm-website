@@ -13,6 +13,7 @@ const __dirname = path.dirname(__filename);
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const app = express();
+app.use(express.static("."));
 const server = http.createServer(app);
 const io = new Server(server);
 
@@ -23,6 +24,10 @@ app.use(express.static(__dirname));
 const contacts = [];
 const activeChatSessions = new Map();
 const chatHistory = new Map();
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "pages", "index.html"));
+}
 
 // Admin page routes
 app.get('/admin', (req, res) => {
