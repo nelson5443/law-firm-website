@@ -25,9 +25,6 @@ const contacts = [];
 const activeChatSessions = new Map();
 const chatHistory = new Map();
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "pages", "index.html"));
-}
 
 // Admin page routes
 app.get('/admin', (req, res) => {
